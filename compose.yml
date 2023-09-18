@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  django_app:
+    container_name: django_app
+    build: .
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+    ports:
+      - 8000:8000
+    env_file: .env
+    depends_on:
+      - db
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d
+      - static_volume:/app/staticfiles
+    restart: on-failure
+    depends_on:
+      - django_app
+  db:
+    restart: always
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    env_file: .env
+volumes:
+  app_volume:
+  static_volume:
+  postgres_data:
