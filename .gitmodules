@@ -1,6 +1,3 @@
-[submodule "bacasand"]
-	path = bacasand
-	# url = https://github.com/dje-1000111/bacasand
 [submodule "django_app/bacasand"]
 	path = django_app/bacasand
 	url = https://github.com/dje-1000111/bacasand
