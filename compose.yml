@@ -6,7 +6,7 @@ services:
     build: .
     volumes:
       - .:/app
-      - static_volume:/app/staticfiles
+      - static_volume:/app/django_app/bacasand/staticfiles
     ports:
       - 8000:8000
     env_file: .env
@@ -19,7 +19,7 @@ services:
       - 80:80
     volumes:
       - ./nginx/:/etc/nginx/conf.d
-      - static_volume:/app/staticfiles
+      - static_volume:/app/django_app/bacasand/staticfiles
     restart: on-failure
     depends_on:
       - django_app
