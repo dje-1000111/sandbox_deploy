@@ -1,4 +1,12 @@
 #!/bin/bash
+echo "Make migrations"
+python /app/django_app/bacasand/manage.py makemigrations
+echo "##################################"
+
+echo "Migrate"
+python /app/django_app/bacasand/manage.py migrate
+echo "##################################"
+
 echo "Translate compil messages"
 django-admin compilemessages
 echo "##################################"

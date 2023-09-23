@@ -7,19 +7,17 @@ services:
     volumes:
       - .:/app
       - static_volume:/app/staticfiles
-    command: bash -c "python manage.py makemigrations --merge   && python manage.py migrate   && python manage.py collectstatic --no-input   && gunicorn --bind=0.0.0.0:8000 app.wsgi:application"
+    command: sh -c "python manage.py collectstatic --no-input   && gunicorn --bind=0.0.0.0:8000 config.wsgi:application"
     ports:
       - 8000:8000
     env_file: .env
     depends_on:
       - db
   nginx:
-    container_name: nginx
-    image: nginx
+    build: ./nginx
     ports:
-      - 80:80
+      - 1337:80
     volumes:
-      - ./nginx/:/etc/nginx/conf.d
       - static_volume:/app/staticfiles
     restart: on-failure
     depends_on:
