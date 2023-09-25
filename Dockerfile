@@ -11,7 +11,5 @@ RUN apt-get update && apt-get install -y gettext && apt-get install -y vim
 
 COPY . /app
 
-RUN chmod +x run.sh
-
 # migrations & translate & runserver
 ENTRYPOINT ["/app/run.sh"]

@@ -5,7 +5,6 @@ The purpose of this project is to deploy a django app via Docker.
 ## Usage
 
 1. Clone the repo in mode `--recurse-submodules`
-
 2. Add `.env` file at the root of `django_app`
 ```
 HOST=<host>
@@ -16,8 +15,8 @@ POSTGRES_DB=<db_name>
 ```
 
 3. Complete the `locale/fr_FR/LC_MESSAGES/django.po` file with your translations.  
-
-4. Run `docker compose up` --> see [docker compose](https://docs.docker.com/compose/)  
+4. Potentially run `chmod +x run.sh`  
+5. Run `docker compose up` --> see [docker compose](https://docs.docker.com/compose/)  
 
 ## Starting state of the project
 
